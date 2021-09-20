@@ -1,0 +1,29 @@
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = HiiBrowser
+  FILE_GUID                      = 3B95F9C5-C1D9-4670-B2C4-E086CD60A1DE
+  MODULE_TYPE                    = UEFI_APPLICATION
+  VERSION_STRING                 = 1.0
+  ENTRY_POINT                    = HiiBrowserEntry
+
+#
+# The following information is for reference only and not required by the build tools.
+#
+#  VALID_ARCHITECTURES           = IA32 X64
+#
+
+[Sources]
+  HiiBrowser.c
+  DumpHii.c
+
+[Packages]
+  MdePkg/MdePkg.dec
+  MdeModulePkg/MdeModulePkg.dec
+
+[LibraryClasses]
+  UefiApplicationEntryPoint
+  MemoryAllocationLib
+  UefiHiiServicesLib
+  DebugLib
+  UefiLib
+  HiiLib
