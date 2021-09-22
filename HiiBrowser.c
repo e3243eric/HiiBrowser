@@ -40,25 +40,5 @@ HiiBrowserEntry (
   }
 
   FreePool (HiiHandles);
-
-  OUTPUT("ExportPackageLists by NULL HiiHandle.\n");
-  {
-    BufferSize = 0;
-    HiiPackageList = NULL;
-    Status = gHiiDatabase->ExportPackageLists(gHiiDatabase, NULL, &BufferSize, HiiPackageList);
-    if (Status == EFI_BUFFER_TOO_SMALL) {
-      HiiPackageList = AllocatePool(BufferSize);
-      ASSERT (HiiPackageList != NULL);
-
-      Status = gHiiDatabase->ExportPackageLists(gHiiDatabase, NULL, &BufferSize, HiiPackageList);
-    }
-    if (EFI_ERROR (Status)) {
-      OUTPUT("HiiHandle[%d] ExportPackageLists return %r\n", Index, Status);
-      return Status;
-    }
-    DumpHiiPackageLists (HiiPackageList, BufferSize);
-    FreePool (HiiPackageList);
-  }
-
   return EFI_SUCCESS;
 }
