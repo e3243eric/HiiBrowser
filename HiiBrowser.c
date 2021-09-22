@@ -15,7 +15,7 @@ HiiBrowserEntry (
 
   HiiHandles = HiiGetHiiHandles(NULL);
   if (HiiHandles == NULL) {
-    Print(L"There are no HII handles in the HII database.\n");
+    OUTPUT("There are no HII handles in the HII database.\n");
     return EFI_NOT_FOUND;
   }
 
@@ -30,7 +30,7 @@ HiiBrowserEntry (
       Status = gHiiDatabase->ExportPackageLists(gHiiDatabase, HiiHandles[Index], &BufferSize, HiiPackageList);
     }
     if (EFI_ERROR (Status)) {
-      Print(L"HiiHandle[%d] ExportPackageLists return %r\n", Index, Status);
+      OUTPUT("HiiHandle[%d] ExportPackageLists return %r\n", Index, Status);
       continue;
     }
     ASSERT (HiiPackageList != NULL);
@@ -41,7 +41,7 @@ HiiBrowserEntry (
 
   FreePool (HiiHandles);
 
-  Print(L"ExportPackageLists by NULL HiiHandle.\n");
+  OUTPUT("ExportPackageLists by NULL HiiHandle.\n");
   {
     BufferSize = 0;
     HiiPackageList = NULL;
@@ -53,7 +53,7 @@ HiiBrowserEntry (
       Status = gHiiDatabase->ExportPackageLists(gHiiDatabase, NULL, &BufferSize, HiiPackageList);
     }
     if (EFI_ERROR (Status)) {
-      Print(L"HiiHandle[%d] ExportPackageLists return %r\n", Index, Status);
+      OUTPUT("HiiHandle[%d] ExportPackageLists return %r\n", Index, Status);
       return Status;
     }
     DumpHiiPackageLists (HiiPackageList, BufferSize);
