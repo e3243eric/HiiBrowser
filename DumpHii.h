@@ -10,6 +10,6 @@
 typedef struct {
   UINT8   Type;
   CHAR16  *Text;
-} HII_PACKAGE_TO_TEXT_TABLE;
+} TYPE_TO_TEXT_TABLE;
 
 #endif

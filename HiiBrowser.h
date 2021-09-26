@@ -28,9 +28,11 @@ OUTPUT(
   DebugVPrint (0xFFFFFFFF, Format, Marker);
   VA_END (Marker);
 
+/*
   VA_START (Marker, Format);
   AsciiPrint (Format, Marker);
   VA_END (Marker);
+*/
 }
 
 #endif // _HII_BROWSER_H_
